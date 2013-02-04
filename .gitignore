@@ -1,0 +1,19 @@
+# sbt
+target/
+lib_managed/
+project/boot/
+project/build/target/
+project/plugins/target/
+project/plugins/lib_managed/
+project/plugins/src_managed/
+
+# Idea
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+*.iws
+*.ipr
+.DS_Store
+log/
