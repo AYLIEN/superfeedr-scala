@@ -6,7 +6,10 @@ Usage
 
 1. Add the jar file to your classpath.
 2. Then in your code:
+
 ```scala
+XMPPConnection.DEBUG_ENABLED = true
+
 val feedr = new Superfeedr("USERNAME", "PASSWORD", "superfeedr.com")
 
 val feeds = List("http://feeds.bbci.co.uk/news/rss.xml",
@@ -40,11 +43,11 @@ def notifHandler = new OnNotificationHandler {
 }
 ```
 
-see `` TestApp.scala `` for a working example.
+see `TestApp.scala` for a working example.
 
 Development
 -----------
 
 Use **SBT**:
-- `` test `` task to run tests
-- `` package `` task to bundle as Jar (`` smack.providers `` should be present in `` META-INF `` dir)
+- `test` task to run tests
+- `package` task to bundle as Jar (`smack.providers` should be present in `META-INF` dir)
