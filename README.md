@@ -4,7 +4,7 @@ Scala wrapper for Superfeedr
 Usage
 -----
 
-1. Add the jar file to your classpath.
+1. Download and add the jar file to your classpath.
 2. Add `smack` and `smackx` to your classpath by either downloading jar files to `lib/` or adding following dependencies in your build.sbt:
 
 ```scala
@@ -13,8 +13,7 @@ libraryDependencies ++= Seq(
   "jivesoftware" % "smackx" % "3.1.0"
 )
 ```
-
-3. Then in your code:
+3.Then in your code:
 
 ```scala
 XMPPConnection.DEBUG_ENABLED = true
@@ -57,6 +56,6 @@ see `TestApp.scala` for a working example.
 Development
 -----------
 
-Use **SBT**:
+With **SBT**:
 - `test` task to run tests
-- `package` task to bundle as Jar (`smack.providers` should be present in `META-INF` dir)
+- `package` task to bundle as jar (`smack.providers` should be present in `META-INF` dir)
