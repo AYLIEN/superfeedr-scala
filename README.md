@@ -5,7 +5,16 @@ Usage
 -----
 
 1. Add the jar file to your classpath.
-2. Then in your code:
+2. Add `smack` and `smackx` to your classpath by either downloading jar files to `lib/` or adding following dependencies in your build.sbt:
+
+```scala
+libraryDependencies ++= Seq(
+  "jivesoftware" % "smack" % "3.1.0",
+  "jivesoftware" % "smackx" % "3.1.0"
+)
+```
+
+3. Then in your code:
 
 ```scala
 XMPPConnection.DEBUG_ENABLED = true
