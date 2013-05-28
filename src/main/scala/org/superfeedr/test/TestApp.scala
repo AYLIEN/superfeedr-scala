@@ -99,7 +99,7 @@ object TestApp {
         println("Feed has %s items:".format(event.getItems.getItemsCount))
         for (item <- event.getItems.getItems) {
           val entry = item.getEntry
-          println("- title: \n %s \n - link: \n %s \n - desc: \n %s".format(entry.title,entry.links(0).href,entry.summary))
+          println("- title: \n %s \n - link: \n %s \n - desc: \n %s".format(entry.titles(0),entry.links(0).href,entry.summary))
         }
       }
       println("\n")

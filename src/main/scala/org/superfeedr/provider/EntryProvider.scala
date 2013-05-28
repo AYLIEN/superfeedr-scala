@@ -19,14 +19,14 @@ class EntryProvider extends PacketExtensionProvider {
     var published:Date = null
     var updated:Date = null
     var summary:String = null
-    var title:String = null
+    var titles:ListBuffer[String] = ListBuffer()
     var content:String = null
 
     while (!name.equals(parser.getName)) {
       if(eventType == XmlPullParser.START_TAG) {
 
         parser.getName match {
-          case "title" => title = parser.nextText
+          case "title" => titles += parser.nextText
           case "summary" => summary = parser.nextText
           case "content" => content = parser.nextText
           case "id" => id = parser.nextText
@@ -57,6 +57,6 @@ class EntryProvider extends PacketExtensionProvider {
       eventType = parser.next()
     }
 
-    new EntryExtension(id,links.toList,published,updated,summary,title,content)
+    new EntryExtension(id,links.toList,published,updated,summary,titles.toList,content)
   }
 }
