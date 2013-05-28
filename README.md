@@ -58,4 +58,4 @@ Development
 
 With **SBT**:
 - `test` task to run tests
-- `package` task to bundle as jar (`smack.providers` should be present in `META-INF` dir)
+- `package` task to bundle as jar (`smack.providers` should be manually added to jar's `META-INF` dir)
