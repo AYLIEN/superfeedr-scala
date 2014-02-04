@@ -9,6 +9,10 @@ import org.superfeedr.extension.notification.SuperfeedrEventExtension
 
 class EventProvider extends EmbeddedExtensionProvider {
   protected def createReturnExtension(currentElement: String, currentNamespace: String, attMap: Map[String, String], content: List[_ <: PacketExtension]): PacketExtension = {
-    new SuperfeedrEventExtension(content.get(0).asInstanceOf[StatusExtension], content.get(1).asInstanceOf[ItemsExtension])
+    if (content.size() > 1) {
+      new SuperfeedrEventExtension(content.get(0).asInstanceOf[StatusExtension], content.get(1).asInstanceOf[ItemsExtension])
+    } else {
+      new SuperfeedrEventExtension(content.get(0).asInstanceOf[StatusExtension])
+    }
   }
 }
