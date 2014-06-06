@@ -3,12 +3,13 @@ package org.superfeedr.provider
 import org.jivesoftware.smack.provider.PacketExtensionProvider
 import org.xmlpull.v1.XmlPullParser
 import org.jivesoftware.smack.packet.PacketExtension
-import org.superfeedr.extension.notification.{EntryLink, EntryExtension}
+import org.superfeedr.extension.notification.{Author, EntryLink, EntryExtension}
 import java.util.Date
 import collection.mutable.ListBuffer
 import org.superfeedr.Superfeedr
 
 class EntryProvider extends PacketExtensionProvider {
+
   def parseExtension(parser: XmlPullParser): PacketExtension = {
 
     val name = parser.getName
@@ -21,6 +22,7 @@ class EntryProvider extends PacketExtensionProvider {
     var summary:String = null
     var titles:ListBuffer[String] = ListBuffer()
     var content:String = null
+    val author:Author = Author(null, null)
 
     while (!name.equals(parser.getName)) {
       if(eventType == XmlPullParser.START_TAG) {
@@ -32,6 +34,8 @@ class EntryProvider extends PacketExtensionProvider {
           case "id" => id = parser.nextText
           case "published" => published = Superfeedr.convertDate(parser.nextText())
           case "updated" => updated = Superfeedr.convertDate(parser.nextText())
+          case "name" => author.name = parser.nextText
+          case "email" => author.email = parser.nextText
           case "link" => {
             var href:String = null
             var title:String = ""
@@ -57,6 +61,6 @@ class EntryProvider extends PacketExtensionProvider {
       eventType = parser.next()
     }
 
-    new EntryExtension(id,links.toList,published,updated,summary,titles.toList,content)
+    new EntryExtension(id,links.toList,published,updated,summary,titles.toList,content,author)
   }
 }
